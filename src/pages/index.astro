@@ -1,23 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import IndexSection from '../components/IndexSection.astro';
+import Navigation from '../components/Navigation.astro';
 ---
 
 <Layout title="Gerardo Miranda">
 	<header>
-		<nav class="fixed size-full flex flex-col items-end left-full transition ease-out duration-500 z-20
-        sm:left-0 mt-16 text-matrix-medium">
-			<ul class="w-3/4 p-3 bg-primary-200 dark:bg-primary-800
-                sm:flex sm:flex-row sm:size-full sm:justify-around sm:py-0 sm:h-16 sm:px-6
-                md:text-lg lg:text-xl">
-				<a href="http://google.com">
-					<li class="h-10 content-center hover:text-matrix-light sm:h-full sm:px-6">
-						Home
-					</li>
-				</a>
-			</ul>
-		</nav>
-		<svg id="menu-hamburger" class="w-6 fill-txt-light dark:fill-txt-dark sm:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+		<Navigation></Navigation>
 	</header>
 	<main class="text-matrix-medium relative">
 		<section>
@@ -35,16 +25,46 @@ import Card from '../components/Card.astro';
 				</h2>
 			</div>
 		</section>
-		<section id="experience">
-			<div class="h-dvh w-full">
-				<h1>Work experience</h1>
-			</div>
-		</section>
-		<section id="projects">
-			<div class="h-dvh w-full">
-				<h1>Projects</h1>
-			</div>
-		</section>
+		<IndexSection id="technologies", title="Most used Technologies">
+			<ul>
+				<li>Ruby on Rails</li>
+				<li>Javascript</li>
+				<li>Flutter</li>
+				<li>MySql</li>
+				<li>Java</li>
+				<li>Astro</li>
+				<li>TailwindCSS</li>
+			</ul>
+		</IndexSection>
+		<IndexSection id="experience" title="Work Experience">
+			<ExperienceCard company="Flexwage Solutions" position="Ruby on Rails developer">
+				<p>
+					Mantaining and developing new features for the Flexwage web application
+					using Ruby on Rails
+				</p>
+				<ul class="list-disc">
+					<li>Develop importers, exporters and processes for client data of more than 20 clients.</li>
+				</ul>
+			</ExperienceCard>
+			<ExperienceCard company="Billfire" position="QA">
+				<p>
+					Executing manual end to end testing of the legacy web application. Automating testing 
+					of the new web application using Selenium WebDriver.
+				</p>
+				<ul>
+					<li>Reduced automated tests line count by 50% by implementing a new testing framework.</li>
+					<li>Helped writing the test suites for the new web application for the company.</li>
+				</ul>
+			</ExperienceCard>
+		</IndexSection>
+		<IndexSection id="projects" title="Projects">
+			<ul>
+				<li>Mochapi</li>
+				<li>Duration Spinbox</li>
+				<li>Spat</li>
+				<li>Tomy</li>
+			</ul>
+		</IndexSection>
 	</main>
 	<footer class="text-matrix-medium">
 		<div class="h-[50dvh]">
@@ -53,28 +73,3 @@ import Card from '../components/Card.astro';
 	</footer>
 </Layout>
 
-<script is:inline>
-    const showMenu = () => {
-        const modalBg = document.getElementById("content-modal");
-        const element = document.getElementById("menu-list");
-        const menuHamburger = document.getElementById("menu-hamburger");
-        element.classList.toggle("-translate-x-full");
-        modalBg.classList.toggle("hidden");
-        menuHamburger.classList.toggle("fill-txt-light");
-        menuHamburger.classList.toggle("dark:fill-txt-dark");
-        menuHamburger.classList.toggle("fill-secondary-dark");
-        menuHamburger.classList.toggle("dark:fill-secondary-light");
-    }
-    const hideMenu = () => {
-        const element = document.getElementById("menu-list");
-        const modalBg = document.getElementById("content-modal");
-        const menuHamburger = document.getElementById("menu-hamburger");
-        element.classList.remove("-translate-x-full");
-        modalBg.classList.add("hidden");
-        menuHamburger.classList.add("fill-txt-light", "dark:fill-txt-dark")
-        menuHamburger.classList.remove("fill-secondary-dark", "dark:fill-secondary-light")
-        
-    }
-    document.getElementById("menu-hamburger").addEventListener("click", showMenu);
-    document.getElementById("menu-list").addEventListener("click", hideMenu);
-</script>

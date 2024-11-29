@@ -1,0 +1,16 @@
+---
+const {url, name} = Astro.props;
+const nName:string = name || "";
+const actualName:string = nName.length < 2 ? nName.toUpperCase() : nName.charAt(0).toUpperCase() + nName.slice(1);
+---
+
+<a href={url}>
+    <div class="border-b-2 border-l-2 border-matrix-medium px-2 mt-2
+                hover:border-matrix-light hover:text-matrix-light
+                sm:p-4 sm:my-0 sm:mx-4 sm:border-2 sm:rounded-xl">
+        <li class="h-10 content-center  sm:h-full sm:px-6">
+            {actualName}
+        </li>
+    </div>
+    
+</a>

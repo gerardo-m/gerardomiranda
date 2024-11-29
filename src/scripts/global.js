@@ -36,10 +36,6 @@ let s = (sk) => {
         }
     }
 
-    sk.preload = () => {
-        
-    }
-
     sk.windowResized = () => {
         let container = document.getElementById("p5container");
         sk.resizeCanvas(container.offsetWidth, container.offsetHeight);
@@ -51,7 +47,6 @@ let s = (sk) => {
         let canvas = sk.createCanvas(container.offsetWidth, container.offsetHeight);
         canvas.parent("p5container");
         sk.frameRate(30);
-        
     }
 
     sk.draw = () =>{

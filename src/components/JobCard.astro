@@ -1,0 +1,33 @@
+---
+import {Image} from 'astro:assets';
+const { name, position, tech, location, period, url, image } = Astro.props;
+---
+
+<div class="flex flex-col py-8">
+    <div class="flex justify-center w-full">
+        <a href={url}>
+            <div class="rounded-full overflow-hidden aspect-square ">
+                <Image src={image} alt="" class=""></Image>
+            </div>
+        </a>
+    </div>
+    <div class="flex flex-col p-6 items-center  ">
+        <p class="text-xl font-bold">
+            {name}
+        </p>
+        <p class="text-base text-surface-light">
+            {location}
+        </p>
+        <p class="text-base text-surface-light">
+            {period}
+        </p>
+    </div>
+    
+    <p class="text-wrap text-surface-light text-base text-center">
+        <b class="text-matrix-medium">{position}: </b>{tech}
+    </p>
+    <button class="rounded-xl border border-matrix-medium mt-6 p-4">
+        Details
+    </button>
+
+</div>

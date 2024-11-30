@@ -1,0 +1,20 @@
+@keyframes header-opacity-animation{
+    from{
+        background-color: transparent;
+        height: 14rem;
+    }
+    to{
+        background-color: #13151a;
+        height: 6rem;
+    }
+}
+
+@media screen(sm){
+    #menu-list{
+        animation: header-opacity-animation;
+        animation-timeline: scroll();
+        animation-range: 0dvh 90dvh;
+        animation-fill-mode: forwards;
+    }
+}
+

@@ -1,33 +1,41 @@
 ---
 import {Image} from 'astro:assets';
+import DefaultButton from './DefaultButton.astro';
 const { name, position, tech, location, period, url, image } = Astro.props;
+const altName = name + " logo";
 ---
 
-<div class="flex flex-col py-8">
-    <div class="flex justify-center w-full">
+<div class="flex flex-col items-center
+            sm:flex-row sm:justify-between sm:w-full sm:max-w-screen-md sm:items-start">
+    <div class="flex justify-center w-full sm:w-auto">
         <a href={url}>
             <div class="rounded-full overflow-hidden aspect-square ">
-                <Image src={image} alt="" class=""></Image>
+                <Image src={image} alt={altName} class=""></Image>
             </div>
         </a>
     </div>
-    <div class="flex flex-col p-6 items-center  ">
-        <p class="text-xl font-bold">
-            {name}
-        </p>
-        <p class="text-base text-surface-light">
-            {location}
-        </p>
-        <p class="text-base text-surface-light">
-            {period}
+    <div class="sm:w-1/2 sm:items-start sm:px-12 sm:mt-2">
+        <div class="flex flex-col p-6 items-center sm:items-start sm:px-0">
+            <p class="text-xl font-bold">
+                {name}
+            </p>
+            <p class="text-base text-surface-light">
+                {location}
+            </p>
+            <p class="text-base text-surface-light">
+                {period}
+            </p>
+        </div>
+        
+        <p class="text-wrap text-surface-light text-base text-center sm:text-start">
+            <b class="text-matrix-medium">{position}: </b>{tech}
         </p>
     </div>
     
-    <p class="text-wrap text-surface-light text-base text-center">
-        <b class="text-matrix-medium">{position}: </b>{tech}
-    </p>
-    <button class="rounded-xl border border-matrix-medium mt-6 p-4">
-        Details
+    <button class="w-64 sm:mt-8">
+        <DefaultButton>
+            Details
+        </DefaultButton>
     </button>
 
 </div>

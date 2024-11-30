@@ -1,0 +1,8 @@
+---
+const { onclick } = Astro.props;
+---
+
+<div class="rounded-xl border-2 border-matrix-medium text-matrix-medium p-2 text-center
+            hover:border-matrix-light hover:text-matrix-light" onclick={onclick}>
+    <slot></slot>
+</div>

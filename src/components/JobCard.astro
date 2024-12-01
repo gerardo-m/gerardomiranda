@@ -8,7 +8,7 @@ const altName = name + " logo";
 <div class="flex flex-col items-center
             sm:flex-row sm:justify-between sm:w-full sm:max-w-screen-md sm:items-start">
     <div class="flex justify-center w-full sm:w-auto">
-        <a href={url}>
+        <a href={url} target="_blank">
             <div class="rounded-full overflow-hidden aspect-square ">
                 <Image src={image} alt={altName} class=""></Image>
             </div>
@@ -32,7 +32,7 @@ const altName = name + " logo";
         </p>
     </div>
     
-    <button class="w-64 sm:mt-8">
+    <button class="w-64 sm:mt-8" onclick="showDialog('job-details')">
         <DefaultButton>
             Details
         </DefaultButton>

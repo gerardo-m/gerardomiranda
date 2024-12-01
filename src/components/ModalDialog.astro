@@ -1,0 +1,32 @@
+---
+import DefaultButton from './DefaultButton.astro';
+
+interface Props {
+	id: string;
+}
+const { id } = Astro.props;
+const closeId = "close" + id;
+---
+
+<div id={id} class="hidden fixed z-50 w-full h-full max-w-screen-lg content-center">
+    <div class="flex flex-col bg-surface-dark border-double border-2 border-matrix-medium items-center justify-evenly space-y-8 py-8">
+        <slot></slot>
+        <button id={closeId}>
+            <DefaultButton>
+                Close
+            </DefaultButton>
+        </button>
+    </div>
+    
+</div>
+
+<script is:inline define:vars={{id, closeId}}>
+    const closeDialog = () =>{
+        const dialog = document.getElementById(id);
+        const modal = document.getElementById("page-modal");
+        dialog.classList.add("hidden");
+        modal.classList.add("hidden");
+    }
+
+    document.getElementById(closeId).addEventListener("click", closeDialog);
+</script>

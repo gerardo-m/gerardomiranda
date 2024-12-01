@@ -28,7 +28,7 @@ if (actualImage == undefined){
         {
             links?.map(
                 (link: { url: string | URL; name: string; }) =>{
-                    return <a href={link.url}>
+                    return <a href={link.url} target="_blank">
                         <DefaultButton>
                             {link.name}
                         </DefaultButton>

@@ -8,8 +8,11 @@ import JobCard from '../components/JobCard.astro';
 import flexwageImage from '../images/companies/flexwage.jpg';
 import billfireImage from '../images/companies/billfire.jpg';
 import economicoImage from '../images/companies/economico.jpg';
+import bettyImage from '../images/projects/betty.webp';
+import dartImage from '../images/projects/pub-dev.svg';
+import tomyImage from '../images/projects/tomy.webp';
+
 import ProjectCard from '../components/ProjectCard.astro';
-import DefaultButton from '../components/DefaultButton.astro';
 
 const durationSpinBoxLinks = [
 	{url: "https://pub.dev/packages/duration_spinbox", name: "pub.dev"},
@@ -20,6 +23,10 @@ const spatLinks = [
 ];
 const tomyLinks = [
 	{url: "https://play.google.com/store/apps/details?id=dev.gerardomiranda.tomy", name: "Google Play"}
+];
+const bettyLinks = [
+	{url: "https://play.google.com/store/apps/details?id=dev.gerardomiranda.betty", name: "Google Play"},
+	{url: "https://github.com/gerardo-m/betty_open/", name: "Source code"}
 ];
 ---
 
@@ -121,21 +128,25 @@ const tomyLinks = [
 			</div>
 		</IndexSection>
 		<IndexSection id="experience" title="Work Experience">
-			<JobCard image={flexwageImage} name="Flexwage Solutions" location="Scottsdale, AZ" period="09/2018 - Present" 
+			<JobCard id="flexwage" image={flexwageImage} name="Flexwage Solutions" location="Scottsdale, AZ" period="09/2018 - Present" 
 					position="Web developer" tech="Ruby on Rails" url="https://www.flexwage.com">
 			</JobCard>
-			<JobCard image={billfireImage} name="Billfire" location="Scottsdale, AZ" period="07/2017 - 08/2018" 
+			<JobCard id="billfire" image={billfireImage} name="Billfire" location="Scottsdale, AZ" period="07/2017 - 08/2018" 
 					position="QA" tech="Selenium WebDriver" url="https://www.billfire.com">
 			</JobCard>
-			<JobCard image={economicoImage} name="Banco Economico" location="Santa Cruz, Bolivia" period="06/2014 - 07/2017" 
+			<JobCard id="economico" image={economicoImage} name="Banco Economico" location="Santa Cruz, Bolivia" period="06/2014 - 07/2017" 
 					position="Web developer" tech=".Net Technologies" url="https://www.baneco.com.bo">
 			</JobCard>
 		</IndexSection>
 		<IndexSection id="projects" title="Projects">
-			<ProjectCard name="Mochapi" tech="Ruby on Rails">
+			<!-- <ProjectCard name="Mochapi" tech="Ruby on Rails">
 				A web application to mock API endpoints. Includes web application and REST API
+			</ProjectCard> -->
+			<ProjectCard name="Predecime Esta" tech="Flutter, Dart, mason" links={bettyLinks} image={bettyImage}>
+				Mobile application to create and share events to predict on upcoming sports events. I created
+				this for my family during the Qatar World Cup 2022.
 			</ProjectCard>
-			<ProjectCard name="Duration Spinbox" tech="Flutter, Dart, mason" links={durationSpinBoxLinks}>
+			<ProjectCard name="Duration Spinbox" tech="Flutter, Dart, mason" links={durationSpinBoxLinks} image={dartImage}>
 				Flutter widget to handle duration values. Inspired by Flutter Spinbox. The first
 				proper widget I implemented, including documentation and tests.
 			</ProjectCard>
@@ -144,7 +155,7 @@ const tomyLinks = [
 				to make some static pages multilanguage. I extracted the functionality of one of my projects
 				and made it more generic.
 			</ProjectCard>
-			<ProjectCard name="Tomy" tech="Flutter, Dart, mason" links={tomyLinks}>
+			<ProjectCard name="Tomy" tech="Flutter, Dart, mason" links={tomyLinks} image={tomyImage}>
 				Mobile application for my Toastmasters club. Tool to manage the meeting schedule and print 
 				the agenda.
 			</ProjectCard>
@@ -156,4 +167,3 @@ const tomyLinks = [
 		<a href="/about-this-site"><p class="hover:text-matrix-light">About this site</p></a>
 	</footer>
 </Layout>
-

@@ -1,8 +1,9 @@
 ---
 import {Image} from 'astro:assets';
 import DefaultButton from './DefaultButton.astro';
-const { name, position, tech, location, period, url, image } = Astro.props;
+const { id, name, position, tech, location, period, url, image } = Astro.props;
 const altName = name + " logo";
+const buttonAction = "showDialog('job-details-"+id +"')"
 ---
 
 <div class="flex flex-col items-center
@@ -14,7 +15,7 @@ const altName = name + " logo";
             </div>
         </a>
     </div>
-    <div class="sm:w-1/2 sm:items-start sm:px-12 sm:mt-2">
+    <div class="mb-2 sm:w-1/2 sm:items-start sm:px-12 sm:mt-2 sm:mb-0">
         <div class="flex flex-col p-6 items-center sm:items-start sm:px-0">
             <p class="text-xl font-bold">
                 {name}
@@ -32,10 +33,11 @@ const altName = name + " logo";
         </p>
     </div>
     
-    <button class="w-64 sm:mt-8" onclick="showDialog('job-details')">
+    <button class="w-64 sm:mt-8" onclick={buttonAction}>
         <DefaultButton>
             Details
         </DefaultButton>
     </button>
 
 </div>
+

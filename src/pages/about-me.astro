@@ -1,6 +1,77 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import profileImage from "../images/avatar.jpg";
+import keyboardImage from "../images/about-me/voyager.avif";
+import tmImage from "../images/about-me/tm.jpg";
+
+import Image from "astro/components/Image.astro";
 ---
 
 <Layout title="About me">
+    <h1 class="mt-20 mb-10 text-4xl text-matrix-medium font-extrabold text-center w-full
+                sm:mt-64 sm:mb-20 sm:text-6xl">ABOUT ME</h1>
+    <div class="text-base text-surface-light flex flex-col items-center space-y-10
+                sm:space-y-20 sm:text-xl sm:px-32 sm:mb-20">
+        <div class="rounded-3xl overflow-hidden aspect-square max-w-72 sm:max-w-80 md:max-w-96 content-center border-y-4 border-matrix-dark">
+            <Image src={profileImage} alt="profile image" >
+            </Image>
+        </div>
+        <div class="mx-10">
+            <p class="">
+                My name is Gerardo Miranda, I am a software developer born in Santa Cruz de la Sierra, Bolivia in 1992.
+                <br><br>
+                I graduated as a Computer Science Engineer from Universidad Autónoma Gabriel René Moreno. 
+                <br><br>
+                I have over a decade of experience in Software development, working with almost everything: Desktop apps, mobile apps,
+                QA automation, Data processes. Having significantly more experience with <strong>Web Development</strong>.
+            </p>
+            <h2 class="text-matrix-medium font-bold text-xl text-center mt-8 mb-2 
+                        sm:text-3xl sm:mt-12 sm:mb-8">Teaching</h2>
+            <p>
+                Other than software development another of my passions is teaching. Having worked as a teacher in college
+                as a teacher's assistant, as a Computer Science professor in an Elementary School and also a couple of
+                courses as a professional.
+                <br><br>
+                Which brings me to my next interest
+            </p>
+            <h2 class="text-matrix-medium font-bold text-xl text-center mt-8 mb-2 
+                        sm:text-3xl sm:mt-12 sm:mb-8">Public speaking</h2>
+            <div class="flex flex-col w-full items-center mb-8 sm:mb-12">
+                <div class="rounded-3xl overflow-hidden aspect-square max-w-72 sm:max-w-80 md:max-w-96 content-center border-y-4 border-matrix-dark">
+                    <Image src={tmImage} alt="toastmasters image" >
+                    </Image>
+                </div>
+            </div>
+            
+            <p>
+                Being a member of the Club Toastmasters Santa Cruz de la Sierra for over 5 years, serving in the 
+                leadership comitee for most of that time. I have supported the education and growth of dozens of members
+                and even have developed a couple of tools for the club.
+                <br><br>
+                Toastmasters is a nonprofit educational organization, every member including me are volunteers.
+            </p>
+            <h2 class="text-matrix-medium font-bold text-xl text-center mt-8 mb-2 
+                        sm:text-3xl sm:mt-12 sm:mb-8">Other interests</h2>
+            <div class="flex flex-col w-full items-center mb-8 sm:mb-12">
+                <div class="rounded-3xl overflow-hidden aspect-square max-w-72 sm:max-w-80 md:max-w-96 content-center border-y-4 border-matrix-dark">
+                    <Image src={keyboardImage} alt="keyboard image" >
+                    </Image>
+                </div>
+            </div>
+            <p>
+                Other than those above I have a lot of hobbies, now that I think of it. Including:
+                <ul class="list-disc ml-8">
+                    <li>Fitness</li>
+                    <li>Videogames</li>
+                    <li>Heavy metal music</li>
+                    <li>Keyboards</li>
+                    <li>Table Tennis</li>
+                </ul> 
+            </p>
+        </div>
+        
+        <br>
+
+    </div>
+   
 </Layout>

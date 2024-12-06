@@ -1,28 +1,62 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import TechStackCard from "../components/TechStackCard.astro";
+import matrixImage from "../images/about-this-site/matrix.gif"
+import uroborosImage from "../images/about-this-site/uroboros-quine.png";
+import { Image } from "astro:assets";
+
+import astroImage from "../images/about-this-site/astro.png";
+import tailwindImage from "../images/about-this-site/tailwind.jpg";
+import p5Image from "../images/about-this-site/p5.png";
 ---
 
 <Layout title="About this site">
     <h1 class="mt-20 mb-10 text-4xl text-matrix-medium font-extrabold text-center w-full
-                sm:mt-64 sm:mb-20 sm:text-6xl">ABOUT THIS SITE</h1>
-    <div class="text-base text-surface-light flex flex-col items-center space-y-10
+                sm:mt-64 sm:mb-28 sm:text-6xl">ABOUT THIS SITE</h1>
+    <div class="text-base text-surface-light flex flex-col items-center space-y-10 mx-10 mb-20
                 sm:space-y-20 sm:text-xl sm:px-32 sm:mb-20">
-        <h2>Thanks</h2>
-        Here we list the influences of this page
-
-        <h3>The matrix movie</h3>
-        <p>For the overall theme of the page</p>
-        <h3>The creator of the relay quine</h3>
-        <p>For the piece of code that is in the background</p>
-
-        <h2>The tech</h2>
-        <h3>Astro</h3>
-        <p>For the framework</p>
-        <h3>TailwindCSS</h3>
-        <p>for the CSS</p>
-        <h3>p5.js</h3>
-        <p>For the animation</p>
-        <h3>spat</h3>
-        <p>for the translation. When we translate</p>
+        <h2 class="text-matrix-medium text-3xl font-bold
+                    sm:text-4xl">Special thanks to</h2>
+        <div class="flex flex-col space-y-5 items-center w-full md:max-w-screen-md
+                    sm:space-y-8">
+            <h3 class="text-matrix-medium text-xl font-bold
+                        sm:text-2xl">The Matrix movie</h3>
+            <p class="text-left w-full">
+                For the overall design inspiration of course
+            </p>
+            <div class="rounded-3xl overflow-hidden aspect-video max-w-72 sm:max-w-96 md:max-w-screen-md content-center border-y-4 border-matrix-dark">
+                <Image src={matrixImage} alt="the matrix gif" >
+                </Image>
+            </div>
+            
+        </div>
+        <div class="flex flex-col space-y-5 items-center w-full md:max-w-screen-md
+                    sm:space-y-8">
+            <h3 class="text-matrix-medium text-xl font-bold
+                        sm:text-2xl">Yusuke Endoh</h3>
+            <p class="text-left w-full">
+                For the amazing piece of code that is in the background animation.
+                <br>
+                If you don't know what it is, well... just 
+                <a class="text-matrix-medium hover:text-matrix-light" href="https://github.com/mame/quine-relay" target="_blank">[check it out]</a>
+            </p>
+            <div class="rounded-3xl overflow-hidden aspect-square max-w-72 sm:max-w-96 md:max-w-screen-md content-center border-y-4 border-matrix-dark">
+                <Image src={uroborosImage} alt="uroboros quine" >
+                </Image>
+            </div>
+        </div>
+        <h2 class="text-matrix-medium text-3xl font-bold pt-20 sm:text-4xl">The "Tech Stack"</h2>
+        <div class="w-full flex flex-col space-y-16
+                    sm:max-w-screen-md">
+            <TechStackCard techImage={astroImage} title="Astro">
+                To organize everything in to components and to optimize the site.
+            </TechStackCard>
+            <TechStackCard techImage={tailwindImage} title="TailwindCSS">
+                To not have to write plain CSS.
+            </TechStackCard>
+            <TechStackCard techImage={p5Image} title="P5.js">
+                For the animation in the index page :)
+            </TechStackCard>
+        </div>
     </div>
 </Layout>

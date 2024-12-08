@@ -1,0 +1,26 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={[
+  "relative p-1 min-h-[200px] min-w-[200px] flex flex-col h-max",
+  className
+]}>
+  <div class="absolute inset-0 bg-surface-dark p-[4px]">
+    <div class="absolute inset-1 bg-surface-dark shadow-[inset_0_0_10px_rgba(59,130,246,0.5)] ">
+      <div class="absolute inset-2 bg-surface-dark">
+      </div>
+    </div>
+  </div>
+  <div class="relative h-full w-full p-4">
+    <slot></slot>
+  </div>
+  <div class="absolute -left-1 -top-1 h-5 w-5 bg-gradient-to-br from-matrix-dark to-matrix-medium transform  -z-10"></div>
+  <div class="absolute -right-1 -top-1 h-6 w-6 bg-gradient-to-bl from-matrix-dark to-matrix-medium -z-10"></div>
+  <div class="absolute -left-1 -bottom-1 h-6 w-6 bg-gradient-to-tr from-matrix-dark to-matrix-medium -z-10"></div>
+  <div class="absolute -right-1 -bottom-1 h-6 w-6 bg-gradient-to-tl from-matrix-dark to-matrix-medium -z-10"></div>
+</div>

@@ -93,6 +93,9 @@ const { title } = Astro.props;
         const modalBg = document.getElementById("page-modal");
         modalBg.classList.remove("hidden");
         dialog.classList.remove("hidden");
+		//Disabling scrolling
+		document.body.style.overflow = "hidden";
+  		document.body.style.userSelect = "none";
     }
 </script>
 <style is:global>

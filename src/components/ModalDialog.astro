@@ -1,5 +1,6 @@
 ---
 import DefaultButton from './DefaultButton.astro';
+import DialogBorder from './DialogBorder.astro';
 
 interface Props {
 	id: string;
@@ -9,14 +10,17 @@ const closeId = "close" + id;
 ---
 
 <div id={id} class="hidden fixed z-50 w-full h-full max-w-screen-lg content-center">
-    <div class="flex flex-col bg-surface-dark border-double border-2 border-matrix-medium items-center justify-evenly space-y-8 py-8">
-        <slot></slot>
-        <button id={closeId}>
-            <DefaultButton>
-                <div class="px-8">Close</div>
-            </DefaultButton>
-        </button>
-    </div>
+    <DialogBorder>
+        <div class="flex flex-col items-center justify-evenly space-y-8 py-8">
+            <slot></slot>
+            <button id={closeId}>
+                <DefaultButton>
+                    Close
+                </DefaultButton>
+            </button>
+        </div>
+    </DialogBorder>
+    
     
 </div>
 
@@ -26,6 +30,9 @@ const closeId = "close" + id;
         const modal = document.getElementById("page-modal");
         dialog.classList.add("hidden");
         modal.classList.add("hidden");
+        // Re enabling scrolling
+        document.body.style.overflow = "auto";
+        document.body.style.userSelect = "auto";
     }
 
     document.getElementById(closeId).addEventListener("click", closeDialog);

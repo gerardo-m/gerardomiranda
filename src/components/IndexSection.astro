@@ -3,7 +3,8 @@ const { id, title} = Astro.props;
 ---
 
 <section id={id}>
-    <div class="w-full flex flex-col p-8 border-4 border-double border-matrix-medium">
+    <div class="w-full flex flex-col pt-8 pb-12 border-4 border-double border-matrix-medium
+                sm:space-y-16">
         <h1 class="text-center text-4xl p-8
                     sm:text-5xl
                     lg:text-6xl">{title}</h1>

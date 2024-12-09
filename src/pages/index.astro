@@ -131,15 +131,22 @@ const bettyLinks = [
 			</div>
 		</IndexSection>
 		<IndexSection id="experience" title="Work Experience">
-			<JobCard id="flexwage" image={flexwageImage} name="Flexwage Solutions" location="Scottsdale, AZ" period="09/2018 - Present" 
+			<div class="w-full flex flex-col space-y-12
+                    sm:max-w-screen-md">
+				<JobCard id="flexwage" image={flexwageImage} name="Flexwage Solutions" location="Scottsdale, AZ" period="09/2018 - Present" 
 					position="Web developer" tech="Ruby on Rails" url="https://www.flexwage.com">
-			</JobCard>
-			<JobCard id="billfire" image={billfireImage} name="Billfire" location="Scottsdale, AZ" period="07/2017 - 08/2018" 
-					position="QA" tech="Selenium WebDriver" url="https://www.billfire.com">
-			</JobCard>
-			<JobCard id="economico" image={economicoImage} name="Banco Economico" location="Santa Cruz, Bolivia" period="06/2014 - 07/2017" 
-					position="Web developer" tech=".Net Technologies" url="https://www.baneco.com.bo">
-			</JobCard>
+					Maintaining and developing new features for the Flexwage web application.
+				</JobCard>
+				<JobCard id="billfire" image={billfireImage} name="Billfire" location="Scottsdale, AZ" period="07/2017 - 08/2018" 
+						position="QA" tech="Selenium WebDriver" url="https://www.billfire.com">
+					Manual end to end testing of the legacy web application. Testing automation of the new web application.
+				</JobCard>
+				<JobCard id="economico" image={economicoImage} name="Banco Economico" location="Santa Cruz, Bolivia" period="06/2014 - 07/2017" 
+						position="Web developer" tech=".Net Technologies" url="https://www.baneco.com.bo">
+					Responsible of refactoring and maintening the internal web application used by the Risk management department.
+				</JobCard>
+			</div>
+			
 		</IndexSection>
 		<IndexSection id="projects" title="Projects">
 			<!-- <ProjectCard name="Mochapi" tech="Ruby on Rails">

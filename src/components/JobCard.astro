@@ -1,12 +1,48 @@
 ---
 import {Image} from 'astro:assets';
 import DefaultButton from './DefaultButton.astro';
+import DefaultCard from './DefaultCard.astro';
 const { id, name, position, tech, location, period, url, image } = Astro.props;
 const altName = name + " logo";
 const buttonAction = "showDialog('job-details-"+id +"')"
 ---
 
-<div class="flex flex-col items-center
+<DefaultCard imageSize="sm:w-52" title={name} image={image}>
+    <div class="flex flex-col px-6 py-2 items-center sm:items-start sm:px-0">
+        <p class="text-base text-surface-light">
+            {location}
+        </p>
+        <p class="text-base text-surface-light">
+            {period}
+        </p>
+    </div>
+    <p class="text-wrap text-surface-light text-base text-center sm:text-start">
+        <b class="text-matrix-medium">{position}: </b>{tech}
+    </p>
+    
+    <div class="flex flex-col space-y-2 items-center sm:items-start" slot="third-column">
+        <p class="hidden text-surface-light text-base
+            sm:flex">
+            <slot></slot>
+        </p>
+        <div class="flex flex-row text-base sm:text-lg sm:mt-8">
+            <DefaultButton>
+                <a href={url} target="_blank">
+                    Website
+                </a>
+            </DefaultButton>
+            <button class="" onclick={buttonAction} >
+                <DefaultButton>
+                    Details
+                </DefaultButton>
+            </button>
+        </div>
+        
+    </div>
+    
+</DefaultCard>
+
+<!-- <div class="flex flex-col items-center
             sm:flex-row sm:justify-between sm:w-full sm:max-w-screen-md sm:items-start">
     <div class="flex justify-center w-full sm:w-auto">
         <a href={url} target="_blank">
@@ -39,5 +75,5 @@ const buttonAction = "showDialog('job-details-"+id +"')"
         </DefaultButton>
     </button>
 
-</div>
+</div> -->
 

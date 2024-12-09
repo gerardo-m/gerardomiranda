@@ -7,7 +7,7 @@
 - ~~Define projects~~
 - ~~Add email~~
 - ~~Add About me page~~
-- Add About this site page
-- Publish
+- ~~Add About this site page~~
+- ~~Publish~~
 - Improve visual components
 - Add translation

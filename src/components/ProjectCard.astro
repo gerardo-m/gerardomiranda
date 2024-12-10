@@ -1,7 +1,8 @@
 ---
-import {Image} from 'astro:assets';
+ import {Image} from 'astro:assets';
 import defaultImage from '../images/projects/default.jpg';
 import DefaultButton from './DefaultButton.astro';
+import DefaultCard from './DefaultCard.astro';
 const { name, image, tech, links } = Astro.props;
 var actualImage = image;
 if (actualImage == undefined){
@@ -9,38 +10,26 @@ if (actualImage == undefined){
 }
 ---
 
-<div class="flex flex-col space-y-6 max-w-screen-lg w-full
-            sm:flex-row sm:space-x-8 sm:justify-between
-            md:space-x-16">
-    <div class="space-y-4 sm:w-full">
-        <h2 class="font-bold text-2xl text-center sm:text-start">{name}</h2>
-        <div class="flex flex-col text-base text-surface-light space-y-2">
-            <div>
-                <slot></slot>
-            </div>
-            <p>
-                <b class="font-bold text-matrix-medium">Technologies used:</b> {tech}
-            </p>
+<DefaultCard imageSize="sm:w-52" title={name} image={actualImage} thirdColumn="hidden">
+    <div class="flex flex-col text-base text-surface-light space-y-2">
+        <div>
+            <slot></slot>
+        </div>
+        <p>
+            <b class="font-bold text-matrix-medium">Technologies used:</b> {tech}
+        </p>
+        <div class="flex flex-row space-x-8">
+            {
+                links?.map(
+                    (link: { url: string | URL; name: string; }) =>{
+                        return <a href={link.url} target="_blank">
+                            <DefaultButton>
+                                {link.name}
+                            </DefaultButton>
+                        </a>
+                    }
+                )
+            }
         </div>
     </div>
-    <div class="flex flex-col space-y-2
-                sm:w-1/3 md:w-1/4">
-        {
-            links?.map(
-                (link: { url: string | URL; name: string; }) =>{
-                    return <a href={link.url} target="_blank">
-                        <DefaultButton>
-                            {link.name}
-                        </DefaultButton>
-                    </a>
-                }
-            )
-        }
-        
-    </div>
-    <div class="flex justify-center w-full sm:w-auto">
-        <div class="rounded-lg overflow-hidden aspect-square max-w-72 sm:w-64 md:w-72 content-center border-y-4 border-matrix-dark">
-            <Image src={actualImage} alt="" class=""></Image>
-        </div>
-    </div>
-</div>
+</DefaultCard>

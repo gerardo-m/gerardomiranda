@@ -9,7 +9,7 @@ export default {
 				'matrix': {
 					'dark': '#003B00',
 					'medium': '#008F11',
-					'mediumlight': '#00AF20',
+					'mediumlight': '#00B525',
 					'light': '#00FF41',
 				},
 				'txt':{

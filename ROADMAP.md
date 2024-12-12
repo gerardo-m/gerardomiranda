@@ -10,6 +10,8 @@
 - ~~Add About this site page~~
 - ~~Publish~~
 - Improve visual components
-- Add favicon
+- ~~Add favicon~~
 - Add translation
 - Fix hiccup when the screen changes height on mobile
+- Improve the coding rain to adjust to screen size
+- Add content anchors

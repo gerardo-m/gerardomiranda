@@ -1,14 +1,37 @@
 ---
+import DefaultButton from "./DefaultButton.astro"
 import NavigationLink from "./NavigationLink.astro"
+
+const homeLinks =[
+    {text: "Home", url: "/"},
+    {text: "About me", url: "/about-me"},
+    {text: "About this site", url: "/about-this-site"},
+]
 ---
+<nav id="menu-row" class="hidden fixed size-full sm:flex flex-col sm:left-0 sm:h-32 sm:mt-0 sm:items-center sm:justify-center z-20 text-xl text-matrix-mediumlight">
+    <ul class="flex flex-row space-x-4">
+        {
+            homeLinks.map(
+                (link)=>{
+                    return <li class="bg-surface-dark">
+                        <a href={link.url}>
+                            <DefaultButton>
+                                {link.text}
+                            </DefaultButton>
+                        </a>
+                    </li>
+                }
+            )
+        }
+        
+    </ul>
+</nav>
 <nav id="menu-list" class="fixed size-full flex flex-col items-end left-full transition ease-out duration-500 mt-16 z-20 text-matrix-medium
-        sm:left-0 sm:h-48 sm:mt-0 sm:items-center sm:justify-center">
+        sm:hidden">
     <ul class="w-3/4 p-5 bg-surface-dark
         sm:flex sm:flex-row sm:w-auto sm:justify-between sm:py-0 sm:h-16 sm:px-0 sm:bg-transparent
         md:text-lg lg:text-xl">
         <NavigationLink url="/" name="Home"></NavigationLink>
-        <!-- <NavigationLink url="#experience" name="Work Experience"></NavigationLink>
-        <NavigationLink url="#projects" name="Projects"></NavigationLink> -->
         <NavigationLink url="/about-me" name="About me"></NavigationLink>
         <NavigationLink url="/about-this-site" name="About this site"></NavigationLink>
     </ul>
@@ -18,7 +41,6 @@ import NavigationLink from "./NavigationLink.astro"
 
 <script is:inline>
     const showMenu = () => {
-		console.log('adsfasdf');
         const modalBg = document.getElementById("content-modal");
         const element = document.getElementById("menu-list");
         // const menuHamburger = document.getElementById("menu-hamburger");

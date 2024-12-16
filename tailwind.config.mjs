@@ -33,7 +33,8 @@ export default {
 				},
 			},
 			fontFamily: {
-				'mono': ['Kode Mono Variable', ...defaultTheme.fontFamily.mono]
+				'mono': ['Kode Mono Variable', ...defaultTheme.fontFamily.mono],
+				'sans': ['Bai Jamjuree','Sora Variable', defaultTheme.fontFamily.sans],
 			}
 		},
 	},

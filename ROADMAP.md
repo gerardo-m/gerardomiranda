@@ -15,3 +15,5 @@
 - Fix hiccup when the screen changes height on mobile
 - Improve the coding rain to adjust to screen size
 - Add content anchors
+- Add more technologies (in a dialog)
+- Add news section

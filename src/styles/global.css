@@ -1,3 +1,6 @@
+@import '@fontsource-variable/kode-mono';
+@import '@fontsource/bai-jamjuree/500.css';
+
 @keyframes header-opacity-animation{
     from{
         background-color: transparent;

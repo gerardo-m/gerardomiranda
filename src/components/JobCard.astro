@@ -8,10 +8,10 @@ const buttonAction = "showDialog('job-details-"+id +"')"
 
 <DefaultCard imageSize="sm:w-52" title={name} image={image}>
     <div class="flex flex-col px-6 py-2 items-center sm:items-start sm:px-0">
-        <p class="text-base text-surface-light">
+        <p class="text-base text-surface-light font-sans sm:text-lg">
             {location}
         </p>
-        <p class="text-base text-surface-light">
+        <p class="text-base text-surface-light font-sans sm:text-lg">
             {period}
         </p>
     </div>
@@ -20,7 +20,7 @@ const buttonAction = "showDialog('job-details-"+id +"')"
     </p>
     
     <div class="flex flex-col space-y-2 items-center sm:items-start" slot="third-column">
-        <p class="hidden text-surface-light text-base
+        <p class="hidden text-surface-light text-base  font-sans sm:text-lg
             sm:flex">
             <slot></slot>
         </p>

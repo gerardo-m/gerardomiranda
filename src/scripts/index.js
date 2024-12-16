@@ -1,5 +1,5 @@
 import {getQuine, streamToString} from './quine';
-import p5 from 'p5';
+import p5 from 'p5/lib/p5.min.js';
 
 window.addEventListener('DOMContentLoaded', async() => {
     setInterval(blinking_underscore, 500);

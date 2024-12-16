@@ -11,13 +11,14 @@ import Image from "astro/components/Image.astro";
     <h1 class="mt-20 mb-10 text-4xl text-matrix-medium font-extrabold text-center w-full
                 sm:mt-64 sm:mb-20 sm:text-6xl">ABOUT ME</h1>
     <div class="text-base text-surface-light flex flex-col items-center space-y-10
-                sm:space-y-20 sm:text-xl sm:px-32 sm:mb-20">
+                sm:space-y-20 sm:text-xl sm:px-32 sm:mb-20
+                lg:text-2xl">
         <div class="rounded-3xl overflow-hidden aspect-square max-w-72 sm:max-w-80 md:max-w-96 content-center border-y-4 border-matrix-dark">
             <Image src={profileImage} alt="profile image" >
             </Image>
         </div>
         <div class="mx-10">
-            <p class="">
+            <p class="font-sans">
                 My name is Gerardo Miranda, I am a software developer born in Santa Cruz de la Sierra, Bolivia in 1992.
                 <br><br>
                 I graduated as a Computer Science Engineer from Universidad Autónoma Gabriel René Moreno. 
@@ -27,7 +28,7 @@ import Image from "astro/components/Image.astro";
             </p>
             <h2 class="text-matrix-medium font-bold text-xl text-center mt-8 mb-2 
                         sm:text-3xl sm:mt-12 sm:mb-8">Teaching</h2>
-            <p>
+            <p class="font-sans">
                 Other than software development another of my passions is teaching. Having worked as a teacher in college
                 as a teacher's assistant, as a Computer Science professor in an Elementary School and also a couple of
                 courses as a professional.
@@ -43,7 +44,7 @@ import Image from "astro/components/Image.astro";
                 </div>
             </div>
             
-            <p>
+            <p class="font-sans">
                 Being a member of the Club Toastmasters Santa Cruz de la Sierra for over 5 years, serving in the 
                 leadership comitee for most of that time. I have supported the education and growth of dozens of members
                 and even have developed a couple of tools for the club.
@@ -58,9 +59,9 @@ import Image from "astro/components/Image.astro";
                     </Image>
                 </div>
             </div>
-            <p>
+            <p class="font-sans">
                 Other than those above I have a lot of hobbies, now that I think of it. Including:
-                <ul class="list-disc ml-8">
+                <ul class="list-disc ml-8 font-sans">
                     <li>Fitness</li>
                     <li>Videogames</li>
                     <li>Heavy metal music</li>

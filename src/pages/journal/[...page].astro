@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths(){
+  const entries = await getCollection('journal');
+  // const pages = [... entries];
+  return [{props: {entries: entries}, params: {page: 1}}];
+}
+
+const {entries} = Astro.props;
+const { page }= Astro.params;
+
+const contents = await entries.map(async (entry)=>{
+  const {Content, headings} = await render(entry)
+  // console.log(entry)
+  // console.log(await Content)
+  return {entry: entry, content: Content};
+});
+console.log(contents)
+---
+<Layout title={page}>
+  <ul class="list-disc pl-5 underline underline-offset-4 text-lg text-white">
+    {contents.map((content)=>{
+        return <li>
+            {entries[0].data.title}
+            {contents[0].entry}
+        </li>
+    })}
+  </ul>
+</Layout>

@@ -1,8 +1,8 @@
 ---
-title: "first"
+title: "First"
 date: "2025-01-01"
 category: none
-tags: []
+tags: ["rails", "mochapi"]
 
 ---
 

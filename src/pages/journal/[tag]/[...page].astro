@@ -1,0 +1,36 @@
+---
+import JournalPagination from "../../../components/JournalPagination.astro";
+import JournalSection from "../../../components/JournalSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import type {GetStaticPathsOptions} from "astro";
+
+
+export async function getStaticPaths({ paginate }:GetStaticPathsOptions){
+  var entries = await getCollection('journal');
+  const tags = [...new Set(entries.map((entry)=> entry.data.tags).flat())];
+  entries.sort().reverse();
+  return tags.flatMap((tag) => {
+    const filteredEntries = entries.filter((entry)=> entry.data.tags.includes(tag));
+    return paginate(filteredEntries, {params: {tag},pageSize: 10})
+  });
+}
+
+const { page }= Astro.props;
+
+---
+<Layout title={page.currentPage.toString()}>
+  <div class="flex flex-col px-5 text-lg text-white mt-20 space-y-12 mx-5 mb-20 items-center
+              sm:mt-64">
+    <h1 class="text-4xl text-matrix-medium font-bold
+                sm:text-5xl
+                md:text-6xl">
+      Journal
+    </h1>
+    {page.data.map((entry)=>{
+        return <JournalSection entry={entry}></JournalSection>
+    })}
+    <JournalPagination page={page}>
+    </JournalPagination>
+  </div>
+</Layout>

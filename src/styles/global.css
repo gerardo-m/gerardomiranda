@@ -16,7 +16,7 @@
     #menu-row{
         animation: header-opacity-animation;
         animation-timeline: scroll();
-        animation-range: 0dvh 90dvh;
+        animation-range: 0svh 90svh;
         animation-fill-mode: forwards;
     }
 }

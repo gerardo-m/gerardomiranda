@@ -1,15 +1,17 @@
 ---
 import type { Page } from "astro";
-import { getCollection } from "astro:content";
-const pageSize = 10;
-var entries = await getCollection('journal');
-const pageCount = entries.length / pageSize;
-let newArray = Array.from({ length: pageCount+1 }, (value, index) => index);
 interface Props {
-    page: Page
+    page: Page,
+    tag?: string,
+    includeOne?: boolean,
+    baseLink?: string,
 }
-const { page }  = Astro.props;
-const journalBaseLink= "/journal/";
+const { page, tag, includeOne, baseLink  }  = Astro.props;
+let newArray = Array.from({ length: page.total/page.size +1 }, (_, index) => index);
+
+const journalBaseLink= baseLink || "/journal/";
+console.log(journalBaseLink, baseLink);
+
 ---
 
 <div class="flex flex-row max-w-screen-lg w-full justify-center space-x-3 underline underline-offset-4
@@ -18,7 +20,7 @@ const journalBaseLink= "/journal/";
     {page.url.prev ? <a href={page.url.prev}  class="text-matrix-medium hover:text-matrix-light">Prev</a> : null}
     {
         newArray.map((page)=>{
-            return <a href={journalBaseLink+(page+1)} class="text-matrix-medium hover:text-matrix-light">
+            return <a href={journalBaseLink+(tag ?? "")+(tag ? "/" : "")+(includeOne || page >0 ? page+1 : "")} class="text-matrix-medium hover:text-matrix-light">
                 {page+1}
             </a>
         })

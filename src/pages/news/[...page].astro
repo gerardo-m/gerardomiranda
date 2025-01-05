@@ -6,12 +6,13 @@ import JournalPage from "../../components/JournalPage.astro";
 
 export async function getStaticPaths({ paginate }:GetStaticPathsOptions){
   var entries = await getCollection('journal');
+  entries = entries.filter((entry)=> entry.data.category == 'news');
   entries.sort((a,b)=> a.data.date < b.data.date ? 1 : -1);
   return paginate(entries, { pageSize: 10});
 }
 
 const { page }= Astro.props;
 ---
-<JournalPage page={page} includeOne={true}>
+<JournalPage page={page} title="News" baseLink='/news/'>
 
 </JournalPage>

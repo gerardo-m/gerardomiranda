@@ -27,6 +27,15 @@ const bettyLinks = [
 	{url: "https://github.com/gerardo-m/betty_open/", name: "Source code"},
 	{url: "https://play.google.com/store/apps/details?id=dev.gerardomiranda.betty", name: "Google Play"},
 ];
+
+
+// Latest news
+import { getCollection } from 'astro:content';
+import IndexNewsSection from '../components/IndexNewsSection.astro';
+var entries = await getCollection('journal');
+entries = entries.filter((entry)=> entry.data.category == 'news');
+entries.sort((a,b)=> a.data.date < b.data.date ? 1 : -1);
+entries = entries.slice(0, 3)
 ---
 
 <Layout title="Gerardo Miranda">
@@ -87,6 +96,13 @@ const bettyLinks = [
 				</div>
 			</div>
 		</section>
+		<IndexSection id="news", title="News">
+			{
+				entries.map((entry)=>{
+					return <IndexNewsSection entry={entry}></IndexNewsSection>
+				})
+			}
+		</IndexSection>
 		<IndexSection id="technologies", title="Main Technologies">
 			<div class="flex flex-wrap max-w-md sm:max-w-screen-md">
 				<TechCard name="Ruby on Rails">

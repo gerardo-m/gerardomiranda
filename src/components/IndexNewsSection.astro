@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+    entry: CollectionEntry<"journal">
+}
+
+const {entry} = Astro.props;
+const { Content} = await render(entry);
+---
+
+<div class="flex flex-col w-full max-w-screen-md px-5 space-y-5">
+    <div class="flex flex-col space-y-2">
+        <h2 class="text-xl font-bold sm:text-3xl">{entry.data.title}</h2>
+        <p class="text-base text-matrix-mediumlight sm:text-lg">{entry.data.date}</p>
+    </div>
+    <div class="prose prose-p:text-base prose-p:text-white prose-p:font-sans prose-p:leading-6 
+              prose-a:text-matrix-mediumlight hover:prose-a:text-matrix-light py-3 space-y-3 
+                sm:prose-p:text-lg
+                md:prose-p:text-xl">
+        <Content></Content>
+    </div>
+    
+</div>
+

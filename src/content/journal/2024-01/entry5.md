@@ -11,6 +11,7 @@ with the production build and everything should be working as intended.
 The project is far from finished, but that's the idea. Building features
 but having a usable software in the meantime. 
 
-Here is the [[ repo ]](https://github.com/gerardo-m/mochapi) with
-instructions for installation. Documentation will be coming soon, once
-more features are added.
+Here is the 
+<a href="https://github.com/gerardo-m/mochapi" target="_blank">[ repo ]</a> 
+with instructions for installation. Documentation will be coming soon, 
+once more features are added.

@@ -12,4 +12,5 @@ the language.
 I only had to look for help in the reddit community for days 21 and 24...
 those who completed all puzzles will now why.
 
-All my solutions are in this [[ repo ]](https://github.com/gerardo-m/adventofcode)
+All my solutions are in this 
+<a href="https://github.com/gerardo-m/adventofcode" target="_blank">[ repo ]</a>

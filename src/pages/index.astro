@@ -32,6 +32,7 @@ const bettyLinks = [
 // Latest news
 import { getCollection } from 'astro:content';
 import IndexNewsSection from '../components/IndexNewsSection.astro';
+import IndexNewsDialog from '../components/IndexNewsDialog.astro';
 var entries = await getCollection('journal');
 entries = entries.filter((entry)=> entry.data.category == 'news');
 entries.sort((a,b)=> a.data.date < b.data.date ? 1 : -1);
@@ -39,6 +40,12 @@ entries = entries.slice(0, 3)
 ---
 
 <Layout title="Gerardo Miranda">
+	{
+		entries.map((entry)=>{
+			return <IndexNewsDialog entry={entry} slot="dialogs"></IndexNewsDialog>
+		})
+	}
+	
 	<script src="../scripts/index.js"></script>
 	<main class="text-matrix-medium relative">
 		<section>
@@ -96,12 +103,13 @@ entries = entries.slice(0, 3)
 				</div>
 			</div>
 		</section>
-		<IndexSection id="news", title="News">
+		<IndexSection id="news", title="Recent News">
 			{
 				entries.map((entry)=>{
 					return <IndexNewsSection entry={entry}></IndexNewsSection>
 				})
 			}
+			<a class="text-lg text-matrix-mediumlight hover:text-matrix-light sm:text-xl" href="/news">[ See all news]</a>
 		</IndexSection>
 		<IndexSection id="technologies", title="Main Technologies">
 			<div class="flex flex-wrap max-w-md sm:max-w-screen-md">

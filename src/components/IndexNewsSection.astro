@@ -1,13 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { render } from 'astro:content';
+import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
+
 
 interface Props {
     entry: CollectionEntry<"journal">
 }
 
 const {entry} = Astro.props;
-const { Content} = await render(entry);
+const action = "showDialog('news-dialog-"+ entry.id + "')";
 ---
 
 <div class="flex flex-col w-full max-w-screen-md px-5 space-y-5">
@@ -15,12 +16,13 @@ const { Content} = await render(entry);
         <h2 class="text-xl font-bold sm:text-3xl">{entry.data.title}</h2>
         <p class="text-base text-matrix-mediumlight sm:text-lg">{entry.data.date}</p>
     </div>
-    <div class="prose prose-p:text-base prose-p:text-white prose-p:font-sans prose-p:leading-6 
-              prose-a:text-matrix-mediumlight hover:prose-a:text-matrix-light py-3 space-y-3 
-                sm:prose-p:text-lg
-                md:prose-p:text-xl">
-        <Content></Content>
-    </div>
+    
+    <p class="text-base text-white font-sans leading-6 py-3 sm:text-lg md:text-xl">
+        <PostExcerpt post={entry} words={30} addEllipsis={true}>
+
+        </PostExcerpt>
+        <button class="text-matrix-mediumlight hover:text-matrix-light" onclick={action}>[ more ]</button>
+    </p>
     
 </div>
 

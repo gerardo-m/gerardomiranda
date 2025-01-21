@@ -74,6 +74,7 @@ const { title } = Astro.props;
 			 position={billfire.position} description={billfire.description} descriptionItems={billfire.descriptionItems}></JobDetailsDialog>
 		<JobDetailsDialog id={economico.id} title={economico.title} location={economico.location} period={economico.period}
 			 position={economico.position} description={economico.description} descriptionItems={economico.descriptionItems}></JobDetailsDialog>
+		<slot name="dialogs"/>
 		<div id="page-modal" class="bg-surface-dark  opacity-50 z-40 fixed top-0 w-full h-full hidden"></div>
 		<div class="w-full max-w-screen-xl grow flex flex-col">
 			<div id="content-modal" class="bg-surface-dark opacity-50 z-10 fixed w-full h-full hidden"></div>

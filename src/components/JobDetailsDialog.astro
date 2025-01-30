@@ -1,43 +1,30 @@
 ---
+import { type CollectionEntry } from 'astro:content';
 import ModalDialog from "./ModalDialog.astro";
-interface Props{
-    id: string,
-    title: string,
-    location: string, 
-    period: string,
-    position: string,
-    description: string,
-    descriptionItems: string[],
+import { render } from 'astro:content';
+interface Props {
+    jobEntry: CollectionEntry<"experience">
 }
-const {id,title,location,period,position,description,descriptionItems} = Astro.props;
-const actualId = "job-details-"+id;
+const {jobEntry} = Astro.props;
+const actualId = "job-details-"+jobEntry.id;
+const { Content } = await render(jobEntry);
 ---
 <ModalDialog id={actualId}>
-    <div class="text-matrix-medium">
+    <div class="text-matrix-medium  max-w-screen-md">
         <div class="flex flex-col w-full items-center">
-            <h1 class="text-3xl font-bold sm:text-5xl sm:mb-4">{title}</h1>
-            <h2 class="text-xl text-surface-light sm:text-2xl">{location}</h2>
-            <h2 class="text-xl text-surface-light sm:text-2xl">{period}</h2>
+            <h1 class="text-3xl font-bold sm:text-5xl sm:mb-4">{jobEntry.data.company}</h1>
+            <h2 class="text-xl text-surface-light sm:text-2xl">{jobEntry.data.location}</h2>
+            <h2 class="text-xl text-surface-light sm:text-2xl">{jobEntry.data.startDate + " - " + (jobEntry.data.endDate ?? "Present")}</h2>
         </div>
         <div class="flex flex-col p-8 text-surface-light text-sm space-y-4
                     sm:text-base">
             <p class="text-matrix-medium font-bold text-base sm:text-lg">
-                {position}
+                {jobEntry.data.position}
             </p>
-            <p class="font-sans text-base sm:text-lg">
-                {description}
-            </p>
-            <ul class="list-disc pl-8 font-sans text-base sm:text-lg">
-                {
-                    descriptionItems.map(
-                        (item) => {
-                            return <li>
-                                {item}
-                            </li>
-                        }
-                    )
-                }
-            </ul>
+            <div class="flex flex-col space-y-5 prose prose-p:font-sans prose-p:text-base prose-p:sm:text-lg 
+                        prose-ul:list-disc prose-li:font-sans prose-li:text-base prose-li:sm:text-lg prose-ul:space-y-2">
+                <Content></Content>
+            </div>
         </div>
     </div>
 </ModalDialog>

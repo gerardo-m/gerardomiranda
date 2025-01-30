@@ -1,25 +1,30 @@
 ---
+import { render, type CollectionEntry } from 'astro:content';
 import defaultImage from '../images/projects/default.jpg';
 import DefaultButton from './DefaultButton.astro';
 import DefaultCard from './DefaultCard.astro';
-const { name, image, tech, links } = Astro.props;
-var actualImage = image;
+interface Props {
+    projectEntry: CollectionEntry<"projects">
+}
+const { projectEntry } = Astro.props;
+var actualImage = projectEntry.data.logo;
 if (actualImage == undefined){
     actualImage = defaultImage;
 }
+const { Content } = await render(projectEntry);
 ---
 
-<DefaultCard imageSize="sm:w-52" title={name} image={actualImage} thirdColumn="hidden">
+<DefaultCard imageSize="sm:w-52" title={projectEntry.data.name} image={actualImage} thirdColumn="hidden">
     <div class="flex flex-col text-base text-surface-light space-y-2">
         <div class="font-sans sm:text-lg">
-            <slot></slot>
+            <Content></Content>
         </div>
         <p>
-            <b class="font-bold text-matrix-medium">Technologies used:</b> {tech}
+            <b class="font-bold text-matrix-medium">Technologies used:</b> {projectEntry.data.tech.join(", ")}
         </p>
         <div class="flex flex-row space-x-8">
             {
-                links?.map(
+                projectEntry.data.links?.map(
                     (link: { url: string | URL; name: string; }) =>{
                         return <a href={link.url} target="_blank">
                             <DefaultButton>

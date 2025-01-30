@@ -2,54 +2,11 @@
 // Supports weights 400-700
 import '@fontsource-variable/kode-mono';
 import '../styles/global.css';
-import JobDetailsDialog from '../components/JobDetailsDialog.astro';
 import Navigation from '../components/Navigation.astro';
 import DefaultButton from '../components/DefaultButton.astro';
 
 interface Props {
 	title: string;
-}
-
-const flexwage = {
-	id:"flexwage",
-	title: "Flexwage Solutions",
-    location: "Scottsdale, AZ",
-    period: "09/2018 - Present",
-    position: "Web developer: Ruby on Rails",
-    description: "Maintaining and developing new features for the Flexwage web application using Ruby on Rails",
-    descriptionItems: [
-		"Develop importers, exporters and processes for client data of dozens of clients.",
-		"Integrations with third party APIs.",
-		"Customization of the web application for company's partners",
-		"Implemented a highly customizable internal tool (named Urban Llama) to generate thousands of records for testing purposes."
-	],
-}
-
-const billfire ={
-	id:"billfire",
-	title: "Billfire",
-    location: "Scottsdale, AZ",
-    period: "07/2017 - 08/2018",
-    position: "QA: Selenium WebDriver",
-    description: "Executing manual end to end testing of the legacy web application. Automating testing of the new web application using Selenium WebDriver.",
-    descriptionItems: [
-		"Reduced automated tests line count by 50% by implementing a new testing framework.",
-		"Helped writing the test suites for the new web application of the company.",
-	],
-}
-
-const economico ={
-	id:"economico",
-	title: "Banco Económico",
-    location: "Santa Cruz de la Sierra, Bolivia",
-    period: "06/2014 - 07/2017",
-    position: "System Analyst: .NET framework",
-    description: "Refactoring and maintenance for the internal web application used by the Risk management department using the .NET framework",
-    descriptionItems: [
-		"Extended internal credit score tool capabilities from 3 years of historic data to 7 years while reducing the processing time from 10+ hours to less than 1 hour.",
-		"Reduced the amount of support calls of internal clients by more than 50%",
-		"Developed specialized tools to analyze payment capabilities of special clients. e.g. agricultural businesses.",
-	],
 }
 
 const { title } = Astro.props;
@@ -68,12 +25,6 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="min-h-full flex flex-col items-center font-mono">
-		<JobDetailsDialog id={flexwage.id} title={flexwage.title} location={flexwage.location} period={flexwage.period}
-			 position={flexwage.position} description={flexwage.description} descriptionItems={flexwage.descriptionItems}></JobDetailsDialog>
-		<JobDetailsDialog id={billfire.id} title={billfire.title} location={billfire.location} period={billfire.period}
-			 position={billfire.position} description={billfire.description} descriptionItems={billfire.descriptionItems}></JobDetailsDialog>
-		<JobDetailsDialog id={economico.id} title={economico.title} location={economico.location} period={economico.period}
-			 position={economico.position} description={economico.description} descriptionItems={economico.descriptionItems}></JobDetailsDialog>
 		<slot name="dialogs"/>
 		<div id="page-modal" class="bg-surface-dark  opacity-50 z-40 fixed top-0 w-full h-full hidden"></div>
 		<div class="w-full max-w-screen-xl grow flex flex-col">

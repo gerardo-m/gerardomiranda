@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/tailwind": "^5.1.5",
     "@fontsource-variable/kode-mono": "^5.1.0",
     "@fontsource-variable/sora": "^5.1.0",
     "@fontsource/bai-jamjuree": "^5.1.0",
-    "astro": "^4.16.13",
+    "astro": "^5.1.10",
     "p5": "^1.11.1",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.7.2"

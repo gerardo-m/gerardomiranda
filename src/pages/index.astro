@@ -4,45 +4,35 @@ import IndexSection from '../components/IndexSection.astro';
 import TechCard from '../components/TechCard.astro';
 import JobCard from '../components/JobCard.astro';
 
-import flexwageImage from '../images/companies/flexwage.jpg';
-import billfireImage from '../images/companies/billfire.jpg';
-import economicoImage from '../images/companies/economico.jpg';
-import bettyImage from '../images/projects/betty.webp';
-import dartImage from '../images/projects/pub-dev.svg';
-import tomyImage from '../images/projects/tomy.webp';
-
 import ProjectCard from '../components/ProjectCard.astro';
-
-const durationSpinBoxLinks = [
-	{url: "https://github.com/gerardo-m/duration_spinbox/", name: "Source code"},
-	{url: "https://pub.dev/packages/duration_spinbox", name: "pub.dev"},
-];
-const spatLinks = [
-	{url: "https://github.com/gerardo-m/spat/", name: "Source code"}
-];
-const tomyLinks = [
-	{url: "https://play.google.com/store/apps/details?id=dev.gerardomiranda.tomy", name: "Google Play"}
-];
-const bettyLinks = [
-	{url: "https://github.com/gerardo-m/betty_open/", name: "Source code"},
-	{url: "https://play.google.com/store/apps/details?id=dev.gerardomiranda.betty", name: "Google Play"},
-];
-
 
 // Latest news
 import { getCollection } from 'astro:content';
 import IndexNewsSection from '../components/IndexNewsSection.astro';
 import IndexNewsDialog from '../components/IndexNewsDialog.astro';
-var entries = await getCollection('journal');
-entries = entries.filter((entry)=> entry.data.category == 'news');
-entries.sort((a,b)=> a.data.date < b.data.date ? 1 : -1);
-entries = entries.slice(0, 3)
+import JobDetailsDialog from '../components/JobDetailsDialog.astro';
+var journalEntries = await getCollection('journal');
+journalEntries = journalEntries.filter((entry)=> entry.data.category == 'news');
+journalEntries.sort((a,b)=> a.data.date < b.data.date ? 1 : -1);
+journalEntries = journalEntries.slice(0, 3)
+
+var experienceEntries = await getCollection('experience');
+experienceEntries.sort((a,b)=> a.data.order < b.data.order? 1: -1);
+
+var projectEntries = await getCollection('projects');
+projectEntries = projectEntries.filter((entry) => typeof entry.data.order === "number");
+projectEntries.sort((a,b)=> (a.data.order ?? 0) < (b.data.order ?? 0) ? 1: -1)
 ---
 
 <Layout title="Gerardo Miranda">
 	{
-		entries.map((entry)=>{
+		journalEntries.map((entry)=>{
 			return <IndexNewsDialog entry={entry} slot="dialogs"></IndexNewsDialog>
+		})
+	}
+	{
+		experienceEntries.map((entry)=>{
+			return <JobDetailsDialog jobEntry={entry} slot="dialogs"></IndexNewsDialog>
 		})
 	}
 	
@@ -105,7 +95,7 @@ entries = entries.slice(0, 3)
 		</section>
 		<IndexSection id="news", title="Recent News">
 			{
-				entries.map((entry)=>{
+				journalEntries.map((entry)=>{
 					return <IndexNewsSection entry={entry}></IndexNewsSection>
 				})
 			}
@@ -158,18 +148,13 @@ entries = entries.slice(0, 3)
 		<IndexSection id="experience" title="Work Experience">
 			<div class="w-full flex flex-col space-y-16
                     sm:max-w-screen-md">
-				<JobCard id="flexwage" image={flexwageImage} name="Flexwage Solutions" location="Scottsdale, AZ" period="09/2018 - Present" 
-					position="Web developer" tech="Ruby on Rails" url="https://www.flexwage.com">
-					Maintaining and developing new features for the Flexwage web application.
-				</JobCard>
-				<JobCard id="billfire" image={billfireImage} name="Billfire" location="Scottsdale, AZ" period="07/2017 - 08/2018" 
-						position="QA" tech="Selenium WebDriver" url="https://www.billfire.com">
-					Manual end to end testing of the legacy web application. Testing automation of the new web application.
-				</JobCard>
-				<JobCard id="economico" image={economicoImage} name="Banco Economico" location="Santa Cruz, Bolivia" period="06/2014 - 07/2017" 
-						position="Web developer" tech=".Net Technologies" url="https://www.baneco.com.bo">
-					Responsible of refactoring and maintening the internal web application used by the Risk management department.
-				</JobCard>
+				{
+					experienceEntries.map((entry) => {
+						return <JobCard jobEntry={entry}>
+							Maintaining and developing new features for the Flexwage web application.
+						</JobCard>
+					})
+				}
 			</div>
 			
 		</IndexSection>
@@ -179,23 +164,12 @@ entries = entries.slice(0, 3)
 			</ProjectCard> -->
 			<div class="w-full flex flex-col space-y-16
 			sm:max-w-screen-md">
-				<ProjectCard name="Predecime Esta" tech="Flutter, Dart, mason" links={bettyLinks} image={bettyImage}>
-					Mobile application to create and share events to predict on upcoming sports events. I created
-					this for my family during the Qatar World Cup 2022.
-				</ProjectCard>
-				<ProjectCard name="Duration Spinbox" tech="Flutter, Dart, mason" links={durationSpinBoxLinks} image={dartImage}>
-					Flutter widget to handle duration values. Inspired by Flutter Spinbox. The first
-					proper widget I implemented, including documentation and tests.
-				</ProjectCard>
-				<ProjectCard name="Spat" tech="Javascript" links={spatLinks}>
-					A very simple "Static PAge Translator" in javascript (no dependencies). Since I was in need
-					to make some static pages multilanguage. I extracted the functionality of one of my projects
-					and made it more generic.
-				</ProjectCard>
-				<ProjectCard name="Tomy" tech="Flutter, Dart, mason" links={tomyLinks} image={tomyImage}>
-					Mobile application for my Toastmasters club. Tool to manage the meeting schedule and print 
-					the agenda.
-				</ProjectCard>
+				{
+					projectEntries.map(async (entry) =>{
+						return <ProjectCard projectEntry={entry}>
+						</ProjectCard>
+					})
+				}
 			</div>
 			
 		</IndexSection>

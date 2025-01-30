@@ -4,13 +4,18 @@ import { render } from "astro:content";
 const {entry} = Astro.props;
 const {Content} = await render(entry);
 const journalBaseLink = "/journal/";
+const dateOptions: object = {
+	year: "numeric",
+	month: "short",
+	day: "2-digit",
+};
 ---
 
 <div class="w-full space-y-2
             sm:max-w-screen-lg">
     <h2 class="text-xl text-matrix-medium font-bold
                 sm:text-2xl">
-        {entry.data.date} - {entry.data.title}
+        {entry.data.date.toLocaleDateString("en-US", dateOptions)} - {entry.data.title}
     </h2>
     <div class="flex flex-row text-sm space-x-2
                 sm:text-base">

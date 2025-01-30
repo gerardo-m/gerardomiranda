@@ -1,32 +1,38 @@
 ---
-import {Image} from 'astro:assets';
+import { type CollectionEntry } from 'astro:content';
+import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 import DefaultButton from './DefaultButton.astro';
 import DefaultCard from './DefaultCard.astro';
-const { id, name, position, tech, location, period, url, image } = Astro.props;
-const buttonAction = "showDialog('job-details-"+id +"')"
+interface Props {
+    jobEntry: CollectionEntry<"experience">
+}
+const { jobEntry } = Astro.props;
+const buttonAction = "showDialog('job-details-"+jobEntry.id +"')"
 ---
 
-<DefaultCard imageSize="sm:w-52" title={name} image={image}>
+<DefaultCard imageSize="sm:w-52" title={jobEntry.data.company} image={jobEntry.data.logo}>
     <div class="flex flex-col px-6 py-2 items-center sm:items-start sm:px-0">
         <p class="text-base text-surface-light font-sans sm:text-lg">
-            {location}
+            {jobEntry.data.location}
         </p>
         <p class="text-base text-surface-light font-sans sm:text-lg">
-            {period}
+            {jobEntry.data.startDate + " - " + (jobEntry.data.endDate ?? "Present")}
         </p>
     </div>
     <p class="text-wrap text-surface-light text-base text-center sm:text-start">
-        <b class="text-matrix-medium">{position}: </b>{tech}
+        <b class="text-matrix-medium">{jobEntry.data.position}: </b>{jobEntry.data.tech}
     </p>
     
     <div class="flex flex-col space-y-2 items-center sm:items-start" slot="third-column">
         <p class="hidden text-surface-light text-base  font-sans sm:text-lg
             sm:flex">
-            <slot></slot>
+            <PostExcerpt post={jobEntry} words={15} addEllipsis={true}>
+
+            </PostExcerpt>
         </p>
         <div class="flex flex-row text-base sm:text-lg sm:mt-8">
             <DefaultButton>
-                <a href={url} target="_blank">
+                <a href={jobEntry.data.website} target="_blank">
                     Website
                 </a>
             </DefaultButton>
@@ -40,39 +46,4 @@ const buttonAction = "showDialog('job-details-"+id +"')"
     </div>
     
 </DefaultCard>
-
-<!-- <div class="flex flex-col items-center
-            sm:flex-row sm:justify-between sm:w-full sm:max-w-screen-md sm:items-start">
-    <div class="flex justify-center w-full sm:w-auto">
-        <a href={url} target="_blank">
-            <div class="rounded-full overflow-hidden aspect-square">
-                <Image src={image} alt={altName} class=""></Image>
-            </div>
-        </a>
-    </div>
-    <div class="mb-2 sm:w-1/2 sm:items-start sm:px-12 sm:mt-2 sm:mb-0">
-        <div class="flex flex-col p-6 items-center sm:items-start sm:px-0">
-            <p class="text-xl font-bold">
-                {name}
-            </p>
-            <p class="text-base text-surface-light">
-                {location}
-            </p>
-            <p class="text-base text-surface-light">
-                {period}
-            </p>
-        </div>
-        
-        <p class="text-wrap text-surface-light text-base text-center sm:text-start">
-            <b class="text-matrix-medium">{position}: </b>{tech}
-        </p>
-    </div>
-    
-    <button class="w-64 sm:mt-8" onclick={buttonAction}>
-        <DefaultButton>
-            Details
-        </DefaultButton>
-    </button>
-
-</div> -->
 

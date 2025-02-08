@@ -5,7 +5,7 @@ links: [
     {url: "https://github.com/gerardo-m/spat/", name: "Source code"}
 ]
 logo: ./logos/default.jpg
-order: 2
+order: 3
 ---
 
 A very simple "Static PAge Translator" in javascript (no dependencies). Since I was in need

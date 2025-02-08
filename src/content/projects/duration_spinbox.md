@@ -12,7 +12,7 @@ links: [
     },
 ]
 logo: ./logos/pub-dev.svg
-order: 3
+order: 4
 ---
 
 Flutter widget to handle duration values. Inspired by Flutter Spinbox. The first

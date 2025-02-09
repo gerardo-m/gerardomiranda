@@ -17,3 +17,9 @@ The scripts are in this
 I am still working on it, so it is not actually working right now.
 I'm hoping I can finish it by the end of the day, if I got time
 to get some programming done today.
+
+#### Update
+
+In the end I did have some time to do some programming but not much
+so instead I just added the little arrow to the site, to go back to
+the top.

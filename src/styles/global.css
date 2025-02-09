@@ -21,3 +21,24 @@
     }
 }
 
+@keyframes home-arrow-animation{
+    0%{
+        display: none;
+    }
+    50%{
+        display: block;
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+#home-arrow{
+    display: none;
+    animation: home-arrow-animation;
+    animation-timeline: scroll();
+    animation-range: 0svh 100svh;
+    animation-fill-mode: forwards;
+}

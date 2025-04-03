@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import type {GetStaticPathsOptions} from "astro";
+import ProjectsPage from "../../components/ProjectPage.astro";
+
+
+export async function getStaticPaths({ paginate }:GetStaticPathsOptions){
+  var entries = await getCollection('projects');
+  entries.sort((a,b)=> (a.data.order || 0) < (b.data.order || 0) ? 1 : -1);
+  return paginate(entries, { pageSize: 10});
+}
+
+const { page }= Astro.props;
+---
+
+<ProjectsPage page={page} title="Projects" baseLink='/projects/'>
+
+</ProjectsPage>

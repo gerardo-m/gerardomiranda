@@ -4,7 +4,7 @@ tech: ["Flutter", "Dart", "mason"]
 links: [
     {
         name: Source Code,
-        url: https://play.google.com/store/apps/details?id=dev.gerardomiranda.betty
+        url: https://github.com/gerardo-m/betty_open
     },
     {
         url: "https://play.google.com/store/apps/details?id=dev.gerardomiranda.betty", 

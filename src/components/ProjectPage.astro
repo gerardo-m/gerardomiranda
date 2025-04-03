@@ -2,7 +2,7 @@
 import type { Page } from "astro";
 import Layout from "../layouts/Layout.astro"
 import Pagination from "./Pagination.astro";
-import JournalSection from "./JournalSection.astro";
+import ProjectSection from "./ProjectSection.astro";
 interface Props {
     page: Page,
     tag?: string,
@@ -11,7 +11,7 @@ interface Props {
     baseLink?: string,
 }
 const {page, tag, title, includeOne, baseLink} = Astro.props;
-const actualTitle = title ?? "Journal";
+const actualTitle = title ?? "Projects";
 ---
 
 <Layout title={actualTitle + " " + page.currentPage.toString()}>
@@ -26,7 +26,7 @@ const actualTitle = title ?? "Journal";
       {tag && <h2 class="text-lg text-matrix-medium sm:text-2xl">Tag: [{tag}]</h2>}
     </div>
     {page.data.map((entry)=>{
-        return <JournalSection entry={entry}></JournalSection>
+        return <ProjectSection entry={entry}></ProjectSection>
     })}
     <Pagination page={page} tag={tag} includeOne={includeOne} baseLink={baseLink}>
     </Pagination>

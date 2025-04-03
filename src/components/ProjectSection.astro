@@ -1,0 +1,32 @@
+---
+import { render } from "astro:content";
+
+const {entry} = Astro.props;
+const {Content} = await render(entry);
+const journalBaseLink = "/projects/";
+---
+
+<div class="w-full space-y-2
+            sm:max-w-screen-lg">
+    <h2 class="text-xl text-matrix-medium font-bold
+                sm:text-2xl">
+        {entry.data.name}
+    </h2>
+    <div class="flex flex-row text-sm space-x-2
+                sm:text-base">
+        <p class="text-matrix-medium">Tags:&n bsp;</p>
+        {
+            entry.data.links.map((link: { url: string | URL; name: string; } )=>{
+                return <a href={journalBaseLink+link.url} class="text-matrix-mediumlight hover:text-matrix-light">
+                    [{link.name}]
+                </a>
+            })
+        }
+    </div>
+    <div class="prose prose-p:font-sans prose-p:leading-6 prose-p:text-base prose-a:text-matrix-mediumlight 
+                hover:prose-a:text-matrix-light py-3 space-y-3 
+                sm:prose-p:text-lg
+                md:prose-p:text-xl">
+        <Content></Content>
+    </div>
+</div>

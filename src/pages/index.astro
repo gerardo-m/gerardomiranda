@@ -22,6 +22,7 @@ experienceEntries.sort((a,b)=> a.data.order < b.data.order? 1: -1);
 var projectEntries = await getCollection('projects');
 projectEntries = projectEntries.filter((entry) => typeof entry.data.order === "number");
 projectEntries.sort((a,b)=> (a.data.order ?? 0) < (b.data.order ?? 0) ? 1: -1)
+projectEntries = projectEntries.slice(0, 5)
 ---
 
 <Layout title="Gerardo Miranda">
@@ -159,9 +160,6 @@ projectEntries.sort((a,b)=> (a.data.order ?? 0) < (b.data.order ?? 0) ? 1: -1)
 			
 		</IndexSection>
 		<IndexSection id="projects" title="Projects">
-			<!-- <ProjectCard name="Mochapi" tech="Ruby on Rails">
-				A web application to mock API endpoints. Includes web application and REST API
-			</ProjectCard> -->
 			<div class="w-full flex flex-col space-y-16
 			sm:max-w-screen-md">
 				{
@@ -171,7 +169,7 @@ projectEntries.sort((a,b)=> (a.data.order ?? 0) < (b.data.order ?? 0) ? 1: -1)
 					})
 				}
 			</div>
-			
+			<a class="text-lg text-matrix-mediumlight hover:text-matrix-light sm:text-xl" href="/projects">[ See all Projects]</a>
 		</IndexSection>
 	</main>
 </Layout>

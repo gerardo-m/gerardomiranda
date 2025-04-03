@@ -9,8 +9,7 @@ interface Props {
 const { page, tag, includeOne, baseLink  }  = Astro.props;
 let newArray = Array.from({ length: page.total/page.size +1 }, (_, index) => index);
 
-const journalBaseLink= baseLink || "/journal/";
-console.log(journalBaseLink, baseLink);
+const projectBaseLink= baseLink;
 
 ---
 
@@ -20,7 +19,7 @@ console.log(journalBaseLink, baseLink);
     {page.url.prev ? <a href={page.url.prev}  class="text-matrix-medium hover:text-matrix-light">Prev</a> : null}
     {
         newArray.map((page)=>{
-            return <a href={journalBaseLink+(tag ?? "")+(tag ? "/" : "")+(includeOne || page >0 ? page+1 : "")} class="text-matrix-medium hover:text-matrix-light">
+            return <a href={projectBaseLink+(tag ?? "")+(tag ? "/" : "")+(includeOne || page >0 ? page+1 : "")} class="text-matrix-medium hover:text-matrix-light">
                 {page+1}
             </a>
         })

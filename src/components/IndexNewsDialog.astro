@@ -20,10 +20,11 @@ const dateOptions: object = {
             <h2 class="text-matrix-medium text-xl font-bold sm:text-3xl">{entry.data.title}</h2>
             <p class="text-base text-matrix-mediumlight sm:text-lg">{entry.data.date.toLocaleDateString("en-US", dateOptions)}</p>
         </div>
-        <div class="prose prose-p:text-base prose-headings:text-matrix-mediumlight prose-p:text-white prose-p:font-sans prose-p:leading-6 
-                  prose-a:text-matrix-mediumlight hover:prose-a:text-matrix-light p-3 space-y-3
-                    sm:prose-p:text-lg 
-                    md:prose-p:text-xl">
+        <div class="prose prose-p:text-base prose-headings:text-matrix-mediumlight prose-p:text-white 
+                    prose-li:text-base prose-li:font-sans prose-li:text-white prose-ul:list-disc prose-ul:list-inside
+                    prose-p:font-sans prose-p:leading-6 prose-a:text-matrix-mediumlight hover:prose-a:text-matrix-light p-3 space-y-3
+                    sm:prose-p:text-lg sm:prose-li:text-lg
+                    md:prose-p:text-xl md:prose-li:text-xl">
             <Content></Content>
         </div>
     </div>
